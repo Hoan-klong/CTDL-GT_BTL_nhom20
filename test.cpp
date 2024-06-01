@@ -16,6 +16,7 @@ struct HocSinh{
 	string GiamHo;
 	string sdt;		//sdt cua nguoi giam ho
 	MonHoc DiemSo[7]; //gia thiet hoc sinh hoc tat ca 7 mon o tat ca cac khoi
+	HocSinh *HSnext;
 };
 typedef HocSinh *DSHS;
 typedef HocSinh *PnodeHS;
@@ -32,6 +33,7 @@ struct CanBo{
 	DMY NgaySinhCB;
 	string ChucVu;
 	string sdtCB;
+	CanBo *CBnext;
 };
 typedef lop *DSlop;
 typedef lop *PnodeL;
