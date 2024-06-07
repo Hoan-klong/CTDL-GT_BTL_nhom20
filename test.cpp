@@ -10,7 +10,6 @@ struct MonHoc{
 };
 struct HocSinh{
 	string tenHS;
-	int tuoi;
 	DMY NgaySinhHS;
 	string DiaChi;
 	string GiamHo;
@@ -48,6 +47,57 @@ void initDSHS(DSHS &DS){
 }
 void initCB(DSCB &DS){
 	DS = NULL;
+}
+void insertHS(DSHS &DS, string name, int day, int month, int year, string address, string guard, string PhoneNumber){
+	PnodeHS Q = new HocSinh;
+	Q->tenHS = name;
+	Q->NgaySinhHS.ngay = day;
+	Q->NgaySinhHS.thang = month;
+	Q->NgaySinhHS.nam = year;
+	Q->DiaChi = address;
+	Q->GiamHo = guard;
+	Q->sdt = PhoneNumber;
+	if(DS == NULL){
+		Q->HSnext = NULL;
+		DS = Q;
+	} else {
+		Q->HSnext = DS;
+		DS = Q;
+	}
+}
+void insertLop(DSlop &DS, string str1, string str2[5][7], int n){
+	PnodeL Q = new lop;
+	Q->TenLop = str1;
+	Q->QuyLop = n;
+	initDSHS(DS->DanhSachHS);
+	for(int i = 0; i< 5; i++){
+		for(int j = 0; j < 7; j++){
+			Q->TKB[i][j] = str2[i][j];
+		}
+	}
+	if(DS == NULL){
+		Q->Lnext = NULL;
+		DS = Q;
+	} else {
+		Q->Lnext = DS;
+		DS = Q;
+	}
+}
+void insertCB(DSCB &DS, string name, int day, int month, int year, string position,string PhoneNum){
+	PnodeCB Q = new CanBo;
+	Q->tenCB = name;
+	Q->NgaySinhCB.ngay = day;
+	Q->NgaySinhCB.thang = month;
+	Q->NgaySinhCB.nam = year;
+	Q->ChucVu = position;
+	Q->sdtCB = PhoneNum;
+	if(DS == NULL){
+		Q->CBnext = NULL;
+		DS = Q;
+	} else {
+		Q->CBnext = DS;
+		DS = Q;
+	}
 }
 int main(){
 	return 0;
